@@ -15,7 +15,7 @@ public class BanknotesPack {
         return new BanknotesPack(note, count);
     }
 
-    private BanknotesPack(Banknote note, int count) {
+    BanknotesPack(Banknote note, int count) {
         this.count = count;
         this.denomination = note;
     }

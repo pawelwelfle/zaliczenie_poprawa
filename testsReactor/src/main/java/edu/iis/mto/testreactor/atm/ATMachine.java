@@ -40,7 +40,7 @@ public class ATMachine {
         return Withdrawal.create(release(banknotes));
     }
 
-    private List<BanknotesPack> release(List<BanknotesPack> banknotes) {
+    List<BanknotesPack> release(List<BanknotesPack> banknotes) {
         for (BanknotesPack banknotesPack : banknotes) {
             deposit.release(banknotesPack);
         }
@@ -61,7 +61,7 @@ public class ATMachine {
         }
     }
 
-    private void performBankTransaction(AuthorizationToken token, Money amount) throws ATMOperationException {
+    void performBankTransaction(AuthorizationToken token, Money amount) throws ATMOperationException {
         try {
             bank.charge(token, amount);
         } catch (AccountException e) {
@@ -70,7 +70,7 @@ public class ATMachine {
 
     }
 
-    private List<BanknotesPack> calculateWithdrawal(Money amount) throws ATMOperationException {
+    List<BanknotesPack> calculateWithdrawal(Money amount) throws ATMOperationException {
 
         int valueToWithdraw = getValueToWithdraw(amount.getDenomination());
         List<BanknotesPack> result = new ArrayList<>();
